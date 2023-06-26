@@ -235,8 +235,18 @@ order by hiredate desc;
 -- 레코드 갯수 출력 : count    <== 게시판에서 DB의 전체 레코드 수를 가져와서 페이징 처리를 하기위해 사용
     -- count 함수는 null을 카운트 하지않는다.
     -- 특정 컬러의 평균을 구할때 null 값을 카운트 할지말지를 지정해야한다.
+    
+-- count(*) : 전체 레코드수
 select count(*) "전체 레코드수"
 from employee;
 
+-- 특정 컬럼을 카운트 할때 null 허용된 컬럼인 경우 null은 카운트 되지 않음.
 select count(commission) "전체 레코드수"
+from employee;
+
+-- employee 테이블의 컬럼의 null 허용여부, 자료형 (number(n), char(n), varchar2(n), date)
+desc employee;
+
+-- not null 컬럼을 count 해야 전체 레코드를 제대로 출력할수 있다.
+select count(eno)
 from employee;
