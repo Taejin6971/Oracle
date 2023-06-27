@@ -37,6 +37,9 @@ WHERE       : 조건
 GROUP BY    : 그룸핑할컬럼
 HAVING      : 조건 (그룸핑한 결과의 조건)
 ORDER BY    : 컬럼명 (정렬할 컬럼명)
+;
+-- 테이블 구조 확인
+desc employee;
 
 /* 기본 Select */
 -- 모든 컬럼 출력하기
@@ -100,9 +103,6 @@ where salary>=1500 and dno=30;
         - CHAR 보다 성능은 떯어지지만 하드공간을 낭비하지 않는다.
     DATE        : 날짜를 저장하는 데이터 타입
 */
-
--- 테이블 구조 확인
-desc employee;
 
 -- NUMBER : 정수, 실수 값을 가져올때 ''를 붙이면 안됨.
 -- CHAR, VARCHAR2, DATE 값을 가져올때 ''를 붙여야함.
