@@ -336,3 +336,19 @@ insert into childtbl(id,pw,info)
 values ('ddd','aaa',40);
 
 select * from childtbl;
+commit;
+
+-- FK가 참조하는 부모 테이블은 drop되지 않는다.
+    -- 1. 자식 테이블을 먼저 삭제후 부모 테이블 삭제
+    -- 2. 부모 테이블을 삭제하면서 cascade constraints 옵션을 사용하면 강제 삭제가능
+    
+-- 부모 테이블 삭제 불가
+drop table parenttbl;
+
+-- 1. 자식 테이블을 먼저 제거후 부모 테이블 삭제
+drop table childtbl;
+drop table parenttbl;
+
+-- 2. 부모 테이블을 삭제하면서 cascade constraints 옵션을 사용하면 강제 삭제가능
+drop table parenttbl cascade constraints;
+drop table childtbl;
