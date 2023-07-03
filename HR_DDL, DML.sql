@@ -122,7 +122,7 @@ where dno=40;
 
 commit;
 
-/*  제약 조건 : 컬럼에 부여되는 제약, Primary Ket, Unique, Default, Not Null, Check, Foreign Key
+/*  제약 조건 : 컬럼에 부여되는 제약, Primary Key, Unique, Default, Not Null, Check, Foreign Key
         - 특정 컬럼에 무결성을 확보하기 위해서 부여
         
     Primary Key
