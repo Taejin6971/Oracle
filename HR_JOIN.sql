@@ -91,7 +91,7 @@ add constraint CK_EMP03_job check ( job in ('CLERK', 'SALESMAN', 'MANAGER', 'ANA
 select * from employee;
 select * from department;
 
-/*  EQUIE JOIN : 오라클에서만 작동하는 JOIN 구문 <== 공통 키 컬럼은 테이블 이름을 명시해야한다.
+/*  EQUI JOIN : 오라클에서만 작동하는 JOIN 구문 <== 공통 키 컬럼은 테이블 이름을 명시해야한다.
         select - join할 테이블의 컬럼을 명시, 두 테이블의 공통의 키컬럼을 출력시 해당 테이블 명시
         from - join할 테이블을 , 로 명시, 테이블 이름을 별칭으로 사용
         where - 두 테이블의 공통 키 컬럼을 찾아서 = 로 처리
@@ -327,3 +327,39 @@ select * from v_manager_info;
 
 -- VIEW에 저장된 코드 정보를 확인 : 데이터 사전을 사용해서 확인
 select * from user_views;
+
+-- OUTER JOIN : ANSI
+alter table dept05
+add constraint PK_DEPT05_DNO primary key(dno);
+
+alter table emp05
+add constraint FK_EMP05_DNO_DEPT05 foreign key(dno) references dept05(dno);
+
+-- INNER JOIN : 두 테이블의  공통 키 컬럼이 일치하는 것만 출력
+select eno, ename, salary, e.dno, d.dno, dname, loc
+from emp05 e inner join dept05 d
+on e.dno=d.dno;
+
+select * from dept05;
+
+select distinct dno from emp05;
+
+-- RIGHT OUTER JOIN : 오른쪽 테이블의 모든 내용을 출력 <== ANSI JOIN
+select eno, ename, salary, e.dno, d.dno, dname, loc
+from emp05 e right outer join dept05 d
+on e.dno=d.dno;
+
+-- RIGHT OUTER JOIN : 오른쪽 테이블의 모든 내용을 출력 <== EQUI JOIN
+select eno, ename, salary, e.dno, d.dno, dname, loc
+from emp05 e, dept05 d
+where e.dno(+)=d.dno;
+
+-- NATURAL JOIN : 두 테이블의 공통 키 컬럼을 자동으로 식별
+select eno, ename, salary, dno, dname, loc
+from emp05 e natural join dept05 d;
+
+-- SELF JOIN : 자신의 테이블을 한번더 JOIN
+select e.eno, e.ename, e.manager, m.eno, m.ename, m.manager
+from emp05 e, emp05 m
+where e.manager=m.eno
+order by e.eno;
