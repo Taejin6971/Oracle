@@ -18,13 +18,13 @@
     VARCHAR2(10) : Oracle에서만 적용되는 자료형 : VARCHAR ==> VARCHAR2
 */
 
--- Members 테이블
+-- Members 테이블 (회원정보)
 CREATE TABLE Members (
-    MemberID INT PRIMARY KEY,
-    FirstName VARCHAR2(50),
-    LastName VARCHAR2(50),
-    Email VARCHAR2(100),
-    PhoneNumber VARCHAR2(20)
+    MemberID INT PRIMARY KEY,   -- 회원아이디
+    FirstName VARCHAR2(50),     -- 이름
+    LastName VARCHAR2(50),      -- 성
+    Email VARCHAR2(100),        -- 이메일주소
+    PhoneNumber VARCHAR2(20)    -- 핸드폰번호
 );
 
 -- Addresses 테이블
